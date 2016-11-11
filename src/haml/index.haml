@@ -4,37 +4,29 @@
   %head
     %link{:rel => "stylesheet", :type => "text/css", :href => "https://fonts.googleapis.com/css?family=Dosis:300,500|Open+Sans:400,600&subset=latin-ext"}
     /build:css css/style.min.css
-    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/bootstrap.min.css"}
-    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/devicon.min.css"}
-    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/font-awesome.min.css"}
-    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/styles.css"}
-    /endbuild
-
-    /build:js js/main.min.js
-    %script{:src => "/js/jquery.min.js"}
-    %script{:src => "/js/jquery.bez.min.js"}
-    %script{:src => "/js/bootstrap.min.js"}
-    %script{:src => "/js/main.js"}
+    - for i in ["bootstrap", "devicon", "font-awesome"]
+      %link{:rel => "stylesheet", :type => "text/css", :href => "/css/#{i}.min.css"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/main.css"}
     /endbuild
 
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+
   %body.text-center#top{:data => {:spy => "scroll", :target => ".navbar", :offset => "50"}}
     .background
     %nav.navbar.navbar-fixed-top{:role => "navigation"}
-      .wrapper
-        .container
-          .navbar-header
-            %button.navbar-toggle.collapsed{:data => {:toggle => "collapse", :target => "#navigation"}}
-              %span.sr-only Toggle navigation
+      .container
+        .navbar-header
+          %button.navbar-toggle.collapsed{:data => {:toggle => "collapse", :target => "#navigation"}}
+            %span.sr-only Toggle navigation
 
-              - for i in [0...3]
-                %span.icon-bar
+            - for i in [0...3]
+              %span.icon-bar
 
-          .collapse.navbar-collapse.navbar-right#navigation
-            %ul.nav.navbar-nav.text-capitalize
-              - for i in ["about", "quote", "skills", "work", "contact"]
-                %li
-                  %a{:href => "##{i}"}= i
+        .collapse.navbar-collapse.navbar-right#navigation
+          %ul.nav.navbar-nav.text-capitalize
+            - for i in ["about", "quote", "skills", "work", "contact"]
+              %li
+                %a{:href => "##{i}"}= i
     %header#intro
       .profile-image
       .row
@@ -44,8 +36,8 @@
               %b Hello,
               %br
               I'm Irina
-        .col-xs-12.col-md-2.btn-wrapper.clearfix
-          %button.btn.btn-round.btn-overlay.h1
+        .col-xs-12.col-md-2
+          %button.btn.btn-round.btn-overlay
             %i.fa.fa-chevron-down
     
     %section#about
@@ -244,22 +236,14 @@
           .col-xs-12.col-sm-1.col-sm-offset-2
             %a{:href => "#"}
               %i.fa.fa-twitter
-          .col-xs-12.col-sm-1
-            %a{:href => "#"}
-              %i.fa.fa-codepen
-          .col-xs-12.col-sm-1
-            %a{:href => "#"}
-              %i.fa.fa-github
-          .col-xs-12.col-sm-1
-            %a{:href => "#"}
-              %i.fa.fa-bitbucket
-          .col-xs-12.col-sm-1
-          .col-xs-12.col-sm-1
-            %a{:href => "#"}
-              %i.fa.fa-free-code-camp
-          .col-xs-12.col-sm-1
-            %a{:href => "#"}
-              %i.fa.fa-skype
-          .col-xs-12.col-sm-1
-            %a{:href => "#"}
-              %i.fa.fa-telegram
+          - for i in ["codepen", "github", "bitbucket", "free-code-camp", "skype", "telegram"]
+            .col-xs-12.col-sm-1
+              %a{:href => "#"}
+                %i.fa{:class => "fa-#{i}"}
+
+    /build:js js/main.min.js
+    %script{:src => "/js/jquery.min.js"}
+    %script{:src => "/js/jquery.bez.min.js"}
+    %script{:src => "/js/bootstrap.min.js"}
+    %script{:src => "/js/main.js"}
+    /endbuild

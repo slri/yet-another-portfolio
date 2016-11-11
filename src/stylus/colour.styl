@@ -1,0 +1,145 @@
+/*
+ *    colour.styl
+ *
+ *
+ *		Chunks are ordered alphabetically.
+ *    Consists of variables, backgrounds, and colour chunks:
+ *
+ *    .selector
+ *      //colour properties
+ */
+
+/*
+ *    VARIABLES
+ */
+
+$base = #254f65
+$base-highlight = lighten($base, 40)
+$base-light = lighten($base, 20)
+$base-dark = darken($base, 20)
+
+$first-secondary = #995541
+$second-secondary = #C1A65B
+
+$white = #fff
+
+$lightest = #dee5ed
+$middle = desaturate($base, 50)
+$darkest =  #071927
+
+
+/*
+ *    GENERAL
+ */
+
+#about,
+#skills
+  background: $lightest
+
+#quote,
+#work,
+footer
+  background: $darkest
+  color: $lightest
+
+
+.btn-overlay
+  background: alpha($white, .5)
+  color: $base
+
+a
+  color: $base
+  &:hover
+    color: $base-light
+
+.btn:focus
+  box-shadow:  0 0 10px $base
+  outline-style: none !important
+
+
+/*
+ *    PARALLAX BACKGROUND
+ */
+
+.background
+  background-color: $white
+  background: url(https://static.pexels.com/photos/167699/pexels-photo-167699.jpeg)
+
+
+/*
+ *    NAVIGATION
+ */
+ 
+.collapse[aria-expanded=true]
+  background: alpha(desaturate($base, 50), .5)
+  & a
+    color: $lightest
+
+.sticky .navbar
+  background: alpha($white, .5)
+  
+  & .collapse[aria-expanded=true]
+    background: transparent
+    & a
+      color: $base
+
+.icon-bar
+    background: $second-secondary
+
+.navbar-nav li
+  & a:hover
+    background: alpha(lighten($second-secondary, 30), .5)
+    color: $base-dark
+      
+  &.active
+    background: alpha($second-secondary, .5)
+    & a:hover
+        background: alpha(lighten($second-secondary, 50), .5)
+
+
+/*
+ *    INTRO
+ */
+ 
+.profile-image
+  border-color: $first-secondary
+  border-top-color: lighten($first-secondary, 10)
+  border-bottom-color: darken($first-secondary, 10)
+
+  background-image: url(https://scontent.fmad3-1.fna.fbcdn.net/v/t1.0-9/947320_944305358993529_198299321184402044_n.jpg?oh=8422ad7efbde19d79515cb3e6354ca1f&oe=58A53FCF)
+
+.hello
+  background: alpha($white, .3)
+  & h1
+    color: $base
+
+
+/*
+ *    SKILLS
+ */
+
+.page-header
+  border-bottom-color: $middle
+
+.devicon
+  color: $base
+
+.skill
+  & .text
+    & .col-xs-4:nth-of-type(1):before
+      border-left-color: $base
+    & .col-xs-4:nth-of-type(2):before
+      border-left-color: $base-light
+    & .col-xs-4:nth-of-type(3):before
+      border-left-color: $base-highlight
+
+    & .small
+      color: inherit
+  
+  & .percentage
+      & .b
+        background: $base
+      & .i
+        background: $base-light
+      & .e
+        background: $base-highlight

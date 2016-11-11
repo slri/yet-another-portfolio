@@ -27,9 +27,9 @@ $(document).ready(function() {
   
   $(window).scroll(function() {
     if ($(document).scrollTop() > 50) {
-      $("nav > .wrapper").addClass("sticky");
+      $("body").addClass("sticky");
     } else {
-      $("nav > .wrapper").removeClass("sticky");
+      $("body").removeClass("sticky");
     }
   });
   

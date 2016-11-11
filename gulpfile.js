@@ -1,4 +1,4 @@
-var gulp 		= require("gulp"),
+var	gulp 		= require("gulp"),
 	
 	haml 		= require("gulp-haml-coffee"),
 	stylus 		= require("gulp-stylus"),
@@ -10,15 +10,15 @@ var gulp 		= require("gulp"),
 	del 		= require("del"),
 	gulpIf 		= require("gulp-if"),
 	useref 		= require("gulp-useref"),
-	runSequence = require("run-sequence"),
-	browserSync = require("browser-sync");
+	runSequence	= require("run-sequence"),
+	browserSync	= require("browser-sync");
 
 // Environment
 const
 	PRODUCTION 	= false,
 	DEV_DIR 	= "src",
 	PROD_DIR 	= "dist";
-var server 		= PRODUCTION ? PROD_DIR : DEV_DIR;
+var	server 		= PRODUCTION ? PROD_DIR : DEV_DIR;
 
 // Build task should be run before running the default task
 gulp.task("build", function(callback) {
@@ -60,7 +60,7 @@ gulp.task("haml", function() {
 });
 
 gulp.task("stylus", function() {
-	return gulp.src(DEV_DIR + "/stylus/**/*.styl")
+	return gulp.src(DEV_DIR + "/stylus/**/main.styl")
 	.pipe(stylus())
 	.pipe(autoprefix())
 	.pipe(gulp.dest(DEV_DIR + "/css"))
