@@ -1,4 +1,53 @@
 !!!
+-#
+  Moved here due to this code not working(although it should). Leaving it for future reference.
+  - skills = (opts) ->
+    - for row in opts
+      .row
+      - for column in row
+        .skill.col-xs-12.col-md-6
+          .col-xs-12.col-sm-3.text-center
+            %i.devicon{:class => "devicon-#{column.icon}-plain"}
+          .graph.col-xs-12.col-sm-9
+            .text.row
+              .col-xs-4
+                %h4
+                  %i.fa.fa-star.small
+                  %span Beginner
+              .col-xs-4
+                %h4
+                  %i.fa.fa-star.medium
+                  %span Intermediate
+              .col-xs-4
+                %h4
+                  %i.fa.fa-star.large
+                  %span Expert
+            .percentage.row
+              .col-xs-4
+                .b{:class => "#{column.b}"}
+              .col-xs-4
+                .i{:class => "#{column.i}"}
+              .col-xs-4
+                .e{:class => "#{column.e}"}
+  :coffeescript
+  - skilloptions = {        |
+    row: {                  |
+      column: {             |
+        icon: "html5test",  |
+        b: "full",          |
+        i: "full",          |
+        e: "full"           |
+      },                    |
+      column: {             |
+        icon: "css3test",   |
+        b: "full",          |
+        i: "full",          |
+        e: "full"           |
+      }                     |
+    }                       |
+  }                         |
+  = skills(skilloptions)
+
 
 %html
   %head
@@ -24,30 +73,24 @@
 
         .collapse.navbar-collapse.navbar-right#navigation
           %ul.nav.navbar-nav.text-capitalize
-            - for i in ["about", "quote", "skills", "work", "contact"]
+            - for i in ["about", "skills", "work", "contact"]
               %li
                 %a{:href => "##{i}"}= i
     %header#intro
       .profile-image
-      .row
-        .col-xs-12.col-md-5.text-left
-          .hello
-            %h1
-              %b Hello,
-              %br
-              I'm Irina
-        .col-xs-12.col-md-2
-          %button.btn.btn-round.btn-overlay
-            %i.fa.fa-chevron-down
+      .col-xs-12.col-md-5.text-left
+        .hello
+          %h1
+            %b Hello,
+            %br
+            I'm Irina
+      .col-xs-12
+        %button.btn.btn-round.btn-overlay
+          %i.fa.fa-chevron-down
     
     %section#about
       .container
         %h1 What do I do?
-        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae lectus et justo euismod dictum a quis metus. Maecenas vitae nisi risus. Cras sed dignissim dui. Integer sit amet aliquam nisi. Vestibulum ullamcorper ex vitae accumsan sodales. Donec ut nisl vel ipsum porta vehicula. Donec imperdiet, est quis aliquet maximus, ligula turpis ultricies ipsum, et egestas massa ex dictum purus. Phasellus lacinia ligula purus, eu iaculis mauris facilisis vitae.
-    
-    %section#quote
-      .container
-        %h1 Lorem ipsum dolor sit amet
         %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae lectus et justo euismod dictum a quis metus. Maecenas vitae nisi risus. Cras sed dignissim dui. Integer sit amet aliquam nisi. Vestibulum ullamcorper ex vitae accumsan sodales. Donec ut nisl vel ipsum porta vehicula. Donec imperdiet, est quis aliquet maximus, ligula turpis ultricies ipsum, et egestas massa ex dictum purus. Phasellus lacinia ligula purus, eu iaculis mauris facilisis vitae.
     
     %section#skills
@@ -211,7 +254,16 @@
     %section#contact
       .container
         %h1 Get in touch!
-        %p Sed ut viverra odio, quis aliquet augue. Maecenas elementum mattis turpis, quis laoreet tortor gravida quis. Sed interdum, felis eget vulputate maximus, magna mi iaculis magna, at fermentum velit metus vitae ante. Maecenas sit amet erat posuere, pulvinar nibh ut, lacinia elit. Pellentesque felis nisi, malesuada id vehicula ac, auctor ac arcu. Donec ultrices mi ac hendrerit commodo. Nullam tincidunt sem arcu, ac vehicula augue mollis ut. Proin viverra enim tempus nisi ultricies pellentesque. Vestibulum viverra mauris id velit eleifend, eget rhoncus erat placerat. Nunc urna neque, condimentum sed risus non, ullamcorper elementum dui. Cras at purus at enim tempor dignissim non eu ipsum. In posuere maximus enim vitae mollis. Donec a sem odio. Phasellus fermentum neque eget purus imperdiet consequat. Proin quis ligula sed nunc consectetur sagittis et molestie ex. Maecenas vel quam tempor diam condimentum aliquet sed sed dolor.
+        %form{:action => ""}
+          .form-group.field
+            .block
+              %label{:for => "email-from"} Your email address:
+            %input.form-control{:type => "email", :name => "email-from", :placeholder => "", :required => "required"}
+          .form-group.field
+            .block
+              %label{:for => "message"} Your message:
+            %textarea.form-control{:required => "required"}
+          %button.btn.btn-overlay{:type => "submit"} Send
     
     %footer
       .container
@@ -242,8 +294,7 @@
                 %i.fa{:class => "fa-#{i}"}
 
     /build:js js/main.min.js
-    %script{:src => "/js/jquery.min.js"}
-    %script{:src => "/js/jquery.bez.min.js"}
-    %script{:src => "/js/bootstrap.min.js"}
+    - for i in ["jquery", "jquery.bez", "bootstrap", "ScrollMagic"]
+      %script{:src => "/js/#{i}.min.js"}
     %script{:src => "/js/main.js"}
     /endbuild

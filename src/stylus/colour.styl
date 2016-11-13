@@ -3,40 +3,21 @@
  *
  *
  *		Chunks are ordered alphabetically.
- *    Consists of variables, backgrounds, and colour chunks:
+ *    Consists of backgrounds, and colour chunks:
  *
  *    .selector
  *      //colour properties
  */
-
-/*
- *    VARIABLES
- */
-
-$base = #254f65
-$base-highlight = lighten($base, 40)
-$base-light = lighten($base, 20)
-$base-dark = darken($base, 20)
-
-$first-secondary = #995541
-$second-secondary = #C1A65B
-
-$white = #fff
-
-$lightest = #dee5ed
-$middle = desaturate($base, 50)
-$darkest =  #071927
 
 
 /*
  *    GENERAL
  */
 
-#about,
 #skills
   background: $lightest
 
-#quote,
+#about,
 #work,
 footer
   background: $darkest
@@ -44,7 +25,7 @@ footer
 
 
 .btn-overlay
-  background: alpha($white, .5)
+  @extends $overlay-light
   color: $base
 
 a
@@ -63,7 +44,7 @@ a
 
 .background
   background-color: $white
-  background: url(https://static.pexels.com/photos/167699/pexels-photo-167699.jpeg)
+  background-image: url(https://static.pexels.com/photos/167699/pexels-photo-167699.jpeg)
 
 
 /*
@@ -71,12 +52,12 @@ a
  */
  
 .collapse[aria-expanded=true]
-  background: alpha(desaturate($base, 50), .5)
+  @extends $overlay-dark
   & a
     color: $lightest
 
 .sticky .navbar
-  background: alpha($white, .5)
+  @extends $overlay-light
   
   & .collapse[aria-expanded=true]
     background: transparent
@@ -109,9 +90,13 @@ a
   background-image: url(https://scontent.fmad3-1.fna.fbcdn.net/v/t1.0-9/947320_944305358993529_198299321184402044_n.jpg?oh=8422ad7efbde19d79515cb3e6354ca1f&oe=58A53FCF)
 
 .hello
-  background: alpha($white, .3)
+  @extends $overlay-light
   & h1
     color: $base
+
+.btn
+  color: $darkest
+  border-color: $dark-overlay
 
 
 /*
@@ -122,7 +107,7 @@ a
   border-bottom-color: $middle
 
 .devicon
-  color: $base
+  color: $darkest
 
 .skill
   & .text
@@ -143,3 +128,19 @@ a
         background: $base-light
       & .e
         background: $base-highlight
+
+
+/*
+ *    CONTACT
+ */
+ 
+.block
+  @extends $overlay-light
+  box-shadow: 0 5px 5px $dark-overlay 
+
+.form-control
+  @extends $overlay-dark
+  color: rgb(60, 0, 248);  /* change [input cursor color] by this*/
+  text-shadow: 0px 0px 0px rgb(248, 0, 60); /* change [input font] by this*/
+  text-fill-color: transparent;
+  

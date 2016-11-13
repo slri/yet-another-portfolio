@@ -72,7 +72,6 @@ header
  */
 
 .navbar
-  max-height: 15vh
   padding: 2vh 0
 
   z-index: 9999
@@ -90,22 +89,11 @@ header
 #intro
   position: relative
   
-  .profile-image
-    border: 3px solid
-    border-radius: 50%
-    margin-left: 20vw
-    size(37vh, 37vh)
-
-    background-repeat: no-repeat
-    background-position: 30% 5%
-    background-size: 45vh
     
   & .row
     @extends $reset-m-p
-    display: flex
-    flex-wrap: wrap
     
-  & .col-xs-12
+  & [class*="col-"]
     @extends $reset-m-p
     margin-top: 5vh
     
@@ -115,12 +103,19 @@ header
     padding-right: 3vw
     
   & .btn
-    bottom: 0
-    position: relative
     
     &:hover
       transform: scale(1.2, 1.2)
 
+.profile-image
+  border: 3px solid
+  border-radius: 50%
+  margin-left: 20vw
+  size(37vmin, 37vmin)
+
+  background-repeat: no-repeat
+  background-position: 30% 5%
+  background-size: 45vmin
 /*
  *    SKILLS
  */
@@ -163,6 +158,24 @@ header
       width: 33.33333333%
     & .quarter
       width: 20%
+
+
+/*
+ *    CONTACT
+ */
+
+.form-group
+  overflow: hidden
+
+.block
+  padding: 15px 0 5px 0
+
+.form-control
+  border: none
+  border-radius: 0
+
+textarea
+  resize: vertical
 
 
 /*
