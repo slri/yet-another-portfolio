@@ -14,6 +14,13 @@ var	gulp 		= require("gulp"),
 	browserSync	= require("browser-sync");
 
 // Environment
+// 
+// Naming here might be a little odd,
+// but the idea behind this naming
+// convention is that I can say
+// PRODUCTION ? do something : do something else
+// and it would look like I'm actually
+// asking a question there.
 const
 	PRODUCTION 	= false,
 	DEV_DIR 	= "src",
@@ -21,10 +28,12 @@ const
 var	server 		= PRODUCTION ? PROD_DIR : DEV_DIR;
 
 // Build task should be run before running the default task
+// Production build task
 gulp.task("build", function(callback) {
 	runSequence("clean", ["fonts", "stylus", "haml"], "useref", callback);
 });
 
+// Development build task
 gulp.task("build--dev", function(callback) {
 	runSequence(["stylus", "haml"], callback);
 });
@@ -48,7 +57,7 @@ gulp.task("useref", function() {
 	.pipe(gulpIf("*.js", uglify()))
 	.pipe(gulpIf("*.css", cssnano()))
 	.pipe(gulp.dest(PROD_DIR))
-	.pipe(browserSync.reload);
+	.pipe(browserSync.reload({stream: true}));
 });
 
 // Compile
@@ -58,7 +67,7 @@ gulp.task("haml", function() {
 	.pipe(gulp.dest(DEV_DIR))
 	.pipe(gulpIf(!PRODUCTION, browserSync.reload({stream: true})));
 });
-
+// Compile and autoprefix
 gulp.task("stylus", function() {
 	return gulp.src(DEV_DIR + "/stylus/**/main.styl")
 	.pipe(stylus())
@@ -82,9 +91,9 @@ gulp.task("watch", function() {
   gulp.watch(DEV_DIR + "/stylus/**/*.styl", function() {
   	runSequence("stylus", "useref");
   });
-  gulp.watch(DEV_DIR + "/js/**/*.js", "useref");
+  gulp.watch(DEV_DIR + "/js/**/*.js", ["useref"]);
 });
-
+// Same as above, just less things to do
 gulp.task("watch--dev", function() {
   gulp.watch(DEV_DIR + "/haml/**/*.haml", ["haml"]);
   gulp.watch(DEV_DIR + "/stylus/**/*.styl", ["stylus"]);
