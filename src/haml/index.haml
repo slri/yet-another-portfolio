@@ -253,7 +253,7 @@
           
     %section#contact
       .container
-        %h1 Get in touch!
+        %h1#target Get in touch!
         %form{:action => ""}
           .form-group.field
             .block
@@ -294,7 +294,8 @@
                 %i.fa{:class => "fa-#{i}"}
 
     /build:js js/main.min.js
-    - for i in ["jquery", "jquery.bez", "bootstrap", "ScrollMagic"]
+    - for i in ["jquery", "jquery.bez", "bootstrap", "tinycolor"]
       %script{:src => "/js/#{i}.min.js"}
+    %script{:src => "/js/scrollicious.js"}
     %script{:src => "/js/main.js"}
     /endbuild
