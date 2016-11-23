@@ -245,16 +245,122 @@
                     .i.full
                   .col-xs-4
                     .e
+          %h2 Back end:
+          .row
+            .skill.col-xs-12.col-md-6
+              .col-xs-12.col-sm-3.text-center
+                %i.devicon.devicon-php-plain
+              .graph.col-xs-12.col-sm-9
+                .text.row
+                  .col-xs-4
+                    %h4
+                      %i.fa.fa-star.small
+                      %span Beginner
+                  .col-xs-4
+                    %h4
+                      %i.fa.fa-star.medium
+                      %span Intermediate
+                  .col-xs-4
+                    %h4
+                      %i.fa.fa-star.large
+                      %span Expert
+                .percentage.row
+                  .col-xs-4
+                    .b.full
+                  .col-xs-4
+                    .i.full
+                  .col-xs-4
+                    .e.half
+            .skill.col-xs-12.col-md-6
+              .col-xs-12.col-sm-3.text-center
+                %i.devicon.devicon-mysql-plain
+              .graph.col-xs-12.col-sm-9
+                .text.row
+                  .col-xs-4
+                    %h4
+                      %i.fa.fa-star.small
+                      %span Beginner
+                  .col-xs-4
+                    %h4
+                      %i.fa.fa-star.medium
+                      %span Intermediate
+                  .col-xs-4
+                    %h4
+                      %i.fa.fa-star.large
+                      %span Expert
+                .percentage.row
+                  .col-xs-4
+                    .b.full
+                  .col-xs-4
+                    .i.full
+                  .col-xs-4
+                    .e.third
+          .row
+            .skill.col-xs-12.col-md-6
+              .col-xs-12.col-sm-3.text-center
+                %i.devicon.devicon-laravel-plain
+              .graph.col-xs-12.col-sm-9
+                .text.row
+                  .col-xs-4
+                    %h4
+                      %i.fa.fa-star.small
+                      %span Beginner
+                  .col-xs-4
+                    %h4
+                      %i.fa.fa-star.medium
+                      %span Intermediate
+                  .col-xs-4
+                    %h4
+                      %i.fa.fa-star.large
+                      %span Expert
+                .percentage.row
+                  .col-xs-4
+                    .b.full
+                  .col-xs-4
+                    .i.full
+                  .col-xs-4
+                    .e.third
+            .skill.col-xs-12.col-md-6
+              .col-xs-12.col-sm-3.text-center
+                %i.devicon.devicon-wordpress-plain
+              .graph.col-xs-12.col-sm-9
+                .text.row
+                  .col-xs-4
+                    %h4
+                      %i.fa.fa-star.small
+                      %span Beginner
+                  .col-xs-4
+                    %h4
+                      %i.fa.fa-star.medium
+                      %span Intermediate
+                  .col-xs-4
+                    %h4
+                      %i.fa.fa-star.large
+                      %span Expert
+                .percentage.row
+                  .col-xs-4
+                    .b.full
+                  .col-xs-4
+                    .i.full
+                  .col-xs-4
+                    .e
 
     %section#work
-      .container
-        %h1 Projects I have done so far
-        %p Vivamus volutpat pharetra sapien eget facilisis. Vivamus eget risus mi. Aenean orci est, rutrum quis lacus venenatis, tincidunt facilisis magna. Praesent vehicula urna sed semper blandit. In libero eros, rutrum ac justo at, auctor rhoncus elit. Nunc quis egestas lacus. Nunc dapibus, nisi vel ultrices aliquam, erat velit finibus sapien, nec dapibus purus enim in dolor. Ut libero lectus, imperdiet ac risus vel, varius finibus lacus. Etiam semper finibus odio, non elementum eros facilisis quis. Donec ac augue sit amet est dapibus posuere sit amet quis libero. Nam a velit id orci pharetra viverra ac sed felis.
-          
+      .skew-pages
+        .skew-page#page1
+          .skew-page-left
+            .skew-page-skewed
+              .skew-page_content
+                %h2 Something
+                %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae lectus et justo euismod dictum a quis metus.
+          .skew-page-right
+            .skew-page-skewed
+              .skew-page_content.skew-page_content_image
+
     %section#contact
       .container
         %h1#target Get in touch!
-        %form{:action => ""}
+        %form{:method => "POST", :action => "http://formspree.io/irina.balaban.dev@gmail.com"}
           .form-group.field
             .block
               %label{:for => "email-from"} Your email address:
@@ -262,7 +368,7 @@
           .form-group.field
             .block
               %label{:for => "message"} Your message:
-            %textarea.form-control{:required => "required"}
+            %textarea.form-control{:name => "message", :required => "required"}
           %button.btn.btn-overlay{:type => "submit"} Send
     
     %footer

@@ -16,6 +16,7 @@
 
 #skills
   background: $lightest
+  color: $darkest
 
 #about,
 #work,
@@ -131,8 +132,23 @@ a
 
 
 /*
+ *    WORK
+ */
+ 
+.skew-page_content
+  background-color: $middle
+  
+  &_image:before
+    background: alpha($base-light, .3)
+
+#page1
+  .skew-page_content_image
+    background-image: url(http://www.dev8.net/wp-content/uploads/web-design-example9.jpg)
+
+/*
  *    CONTACT
  */
+ 
 #target
   color: $lightest
   

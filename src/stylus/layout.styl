@@ -161,6 +161,81 @@ header
 
 
 /*
+ *    WORK
+ */
+ #work
+   @extends $reset-m-p
+
+.skew-pages
+  position: relative
+  @extends $reset-t-l
+  
+  size(100vh, 100%)
+  
+  overflow: hidden
+  
+.skew-page
+  position: absolute
+  
+  size(100%, 100%)
+  
+  &-left,
+  &-right
+    position: absolute
+    top: 0
+    
+    size(100%, 50%)
+
+  &-left
+    left: 0
+  
+    $transform: skewX(18deg) translate(0, -100%)
+  &-right
+    right: 0
+  
+    $transform: skewX(18deg) translate(0, 100%)
+  
+  &-skewed
+    position: absolute
+    
+    size(100%, 140%)
+    transform: skewX(18deg)
+    
+    overflow: hidden
+    
+    .skew-page-left &
+      left: -40%
+
+  &_content
+    position: absolute
+    
+    size(100%, 100%)
+    padding: 17vh 30%
+    transform: skewX(-18deg)
+    
+    .skew-page-left &
+      transform-origin: 0 100%
+    .skew-page-right &
+      transform-origin: 100% 0
+    
+    &_image
+      &:before
+        content: ""
+        position: absolute
+        @extends $reset-t-l
+        
+        size(100%, 100%)
+        
+        transition: all .5s ease
+      &:hover:before
+        opacity: 0
+
+
+#page1
+  & .skew-page_content_image
+    background-size: cover
+
+/*
  *    CONTACT
  */
 
@@ -176,6 +251,7 @@ header
 
 textarea
   resize: vertical
+  min-height: 20vh
 
 
 /*
