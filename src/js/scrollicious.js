@@ -9,45 +9,46 @@ function scrollicious(opts, callback) {
         return new scrollicious(opts, callback);
     }
 
-    this._globalResizeTimer = null;
+    var _globalResizeTimer 		= null,
+    	_globalAnimationTime 	= opts.animation || 500,
 
-    this._viewport 			= opts.viewport || "";
-	this._computedViewport 	= Math.round($(window).height() * ((this._viewport || 50) / 100));
+    	_viewport 				= opts.viewport || "",
+    	_computedViewport 		= Math.round($(window).height() * ((_viewport || 50) / 100)),
 
-	this._target 			= $(opts.target || "#target");
+    	_target 				= $(opts.target || "#target"),
 
-	this._trigger 			= $(opts.trigger || "#trigger");
+    	_trigger 				= $(opts.trigger || "#trigger"),
 
-	this._duration 			= opts.duration || "";
+    	_duration 				= opts.duration || "",
 
-	this._triggerStart 		= this._trigger.offset().top;
-	this._triggerEnd 		= this._duration || this._trigger.outerHeight();
-	this._triggerOffset 	= this._triggerStart - this._computedViewport;
-	this._triggerDuration 	= this._triggerOffset + this._triggerEnd;
+    	_triggerStart 			= _trigger.offset().top,
+		_triggerEnd 			= _duration || _trigger.outerHeight(),
+		_triggerOffset 			= _triggerStart - _computedViewport,
+		_triggerDuration 		= _triggerOffset + _triggerEnd;
 
-	var _self = this;
+	
 
 	$(window).scroll(function() {
 		var weReAt = $(window).scrollTop();
 
-		if(weReAt >= _self._triggerOffset && weReAt <= _self._triggerDuration) {
+		if(weReAt >= _triggerOffset && weReAt <= _triggerDuration) {
 
-			callback(((weReAt - _self._triggerOffset) / _self._triggerEnd) * 100, _self._target);
+			callback(((weReAt - _triggerOffset) / _triggerEnd) * 100, _target);
 		}
 	});
 
 	$(window).resize(function() {
-		clearTimeout(_self._globalResizeTimer);
-		
-		_self._globalResizeTimer = setTimeout(function() {
+		clearTimeout(_globalResizeTimer);
 
-			_self._computedViewport = Math.round($(window).height() * ((_self._viewport || 50) / 100));
+		_globalResizeTimer = setTimeout(function() {
 
-			_self._triggerStart 	= _self._trigger.offset().top;
-			_self._triggerEnd 		= _self._duration || _self._trigger.outerHeight();
-			_self._triggerOffset 	= _self._triggerStart - _self._computedViewport;
-			_self._triggerDuration 	= _self._triggerOffset + _self._triggerEnd;
-		}, 500);
+			_computedViewport 	= Math.round($(window).height() * ((_viewport || 50) / 100));
+
+			_triggerStart 		= _trigger.offset().top;
+			_triggerEnd 		= _duration || _trigger.outerHeight();
+			_triggerOffset 		= _triggerStart - _computedViewport;
+			_triggerDuration 	= _triggerOffset + _triggerEnd;
+		}, _globalAnimationTime);
 	});
 }
 
