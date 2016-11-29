@@ -163,7 +163,7 @@ header
 /*
  *    WORK
  */
- #work
+#work
    @extends $reset-m-p
 
 .skew-pages
@@ -189,11 +189,18 @@ header
   &-left
     left: 0
   
-    $transform: skewX(18deg) translate(0, -100%)
+    transform: translate(-($magic-vh), -100%)
+    
+    .active &
+      transform: translate(0, 0)
+      
   &-right
     right: 0
   
-    $transform: skewX(18deg) translate(0, 100%)
+    transform: translate($magic-vh, 100%)
+  
+    .active &
+      transform: translate(0, 0)
   
   &-skewed
     position: absolute

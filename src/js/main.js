@@ -1,32 +1,46 @@
 $(document).ready(function() {
-	// Can't help it functionality
-	var original = tinycolor($("#target").css("color"));
-	var transition = tinycolor("#333").toHsv();
+	/**************************
+	 * Global variables
+	 *************************/
+	/**
+	 * Is there an animation already happening?
+	 * @type {Boolean}
+	 */
+	var scrolling = false;
 
-	scrollicious({trigger: "#contact", viewport: 100}, function(step, target) {
+	var workPages = $(".skew-page");
+	var numberOfWorkPages = workPages.length - 1;
+	var currentWorkPage = 0;
 
-		var color = original.toHsv();
+	/**
+	 * Original color that we want to transition from
+	 * @type {tinycolor object}
+	 */
+	var originalColor = tinycolor($("#target").css("color"));
+	/**
+	 * New color we want to transition into.
+	 * @type {HSV object}
+	 */
+	var transitionColor = tinycolor("#0c1822").toHsv();
 
-		color.v += (transition.v - color.v) * (step/100);
+	scrollicious({trigger: "#contact", viewport: 90}, function(step, target) {
 
+		var color = originalColor.toHsv();
 
+		color.v += (transitionColor.v - color.v) * (step/100);
+		
 		target.css("color", tinycolor(color).toHexString());
 	});
 
-	// Did we scroll past 50px? Make navigation sticky
+	// Did we scroll past 30px? Make navigation sticky
 	$(window).scroll(function() {
-		if ($(document).scrollTop() > 50) {
+		if ($(document).scrollTop() > 30) {
 			$("body").addClass("sticky");
 		} else {
 			$("body").removeClass("sticky");
 		}
 	});
 
-	/**
-	 * Is there an animation already happening?
-	 * @type {Boolean}
-	 */
-	var scrolling = false;
   
 	/**
 	 * Checks if there's another animation that's
@@ -62,6 +76,48 @@ $(document).ready(function() {
 			window.location.hash = hash;
 			scrolling = false;
 		});
+	}
+
+	$("#work").on("mousewheel DOMMouseScroll", function(event) {
+		if(scrolling) {
+			event.preventDefault();
+			return;
+		}
+		
+		if(event.originalEvent.wheelDelta < 0 || event.originalEvent.detail < 0) {
+			navigateDown();
+		}
+		else if(event.originalEvent.wheelDelta > 0 || event.originalEvent.detail > 0) {
+			navigateUp();
+		}
+	});
+
+	function navigateUp() {
+		if(currentWorkPage - 1 >= 0) {
+			scrolling = true;
+			
+			event.preventDefault();
+			$(workPages[currentWorkPage--]).removeClass("active");
+			$(workPages[currentWorkPage]).addClass("active");
+
+			setTimeout(function() {
+				scrolling = false;
+			}, 500);
+		}
+	}
+
+	function navigateDown() {
+		if(currentWorkPage + 1 <= numberOfWorkPages) {
+			scrolling = true;
+			
+			event.preventDefault();
+			$(workPages[currentWorkPage++]).removeClass("active");
+			$(workPages[currentWorkPage]).addClass("active");
+
+			setTimeout(function() {
+				scrolling = false;
+			}, 500);
+		}
 	}
   
 	// Gets triggered on navbar links
