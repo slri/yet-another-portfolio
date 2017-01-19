@@ -54,8 +54,8 @@
     %link{:rel => "stylesheet", :type => "text/css", :href => "https://fonts.googleapis.com/css?family=Dosis:300,500|Open+Sans:400,600&subset=latin-ext"}
     /build:css css/style.min.css
     - for i in ["bootstrap", "devicon", "font-awesome"]
-      %link{:rel => "stylesheet", :type => "text/css", :href => "/css/#{i}.min.css"}
-    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/main.css"}
+      %link{:rel => "stylesheet", :type => "text/css", :href => "css/#{i}.min.css"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "css/main.css"}
     /endbuild
 
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
@@ -347,7 +347,7 @@
 
     %section#work
       .skew-pages
-        .skew-page#page1
+        .skew-page.active#page1
           .skew-page-left
             .skew-page-skewed
               .skew-page_content
@@ -428,7 +428,7 @@
 
     /build:js js/main.min.js
     - for i in ["jquery", "jquery.bez", "bootstrap", "tinycolor"]
-      %script{:src => "/js/#{i}.min.js"}
-    %script{:src => "/js/scrollicious.js"}
-    %script{:src => "/js/main.js"}
+      %script{:src => "js/#{i}.min.js"}
+    %script{:src => "js/scrollicious.js"}
+    %script{:src => "js/main.js"}
     /endbuild
