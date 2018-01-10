@@ -13,24 +13,6 @@
  *      //other
  */
 
-/*
- *    MEDIA
- */
-
-@media(min-width: 441px)
-  .graph .fa-star
-    display: none
-    
-  .graph span
-    display: inline
-    
-@media(max-width: 440px)
-  .graph .fa-star
-    display: inline
-    
-  .graph span
-    display: none
-
 
 /*
  *    GENERAL
@@ -81,7 +63,8 @@ header
 .navbar-nav
   @extends $reset-m-p
 
-
+.navbar-fixed-top
+  border-width: 0
 /*
  *    INTRO
  */
@@ -179,6 +162,8 @@ header
   
   size(100%, 100%)
   
+  transform: rotate(0.001deg)
+  
   &-left,
   &-right
     position: absolute
@@ -207,6 +192,8 @@ header
       opacity: .5
   
   &-skewed
+    backface-visibility: hidden;
+
     position: absolute
     
     size(100%, 140%)
@@ -241,9 +228,36 @@ header
       &:hover:before
         opacity: 0
 
+.cards
+  display: none
+
+.card
+  min-height: 100vh
+  margin-bottom: 30px
+  &.col-xs-12
+    padding: 0
+  
+  .card-header,
+  .card-image
+    min-height: 60vh
+  
+  .card-header
+    position: relative
+  
+  .card-title
+    position: absolute
+    width: 100%
+    bottom: 0
+    left: 0
+    margin: 0
+    padding: 20px
+  
+  .card-content
+    padding-top 20px
 
 #page1
-  & .skew-page_content_image
+  & .skew-page_content_image,
+  & .card-image
     background-size: cover
 
 /*
@@ -278,3 +292,33 @@ footer
 
   .social a
     padding: 2.5vw 0
+    
+    
+/*
+ *    MEDIA
+ */
+
+@media(min-width: 441px)
+  .graph .fa-star
+    display: none
+    
+  .graph span
+    display: inline
+    
+@media(max-width: 440px)
+  .graph .fa-star
+    display: inline
+    
+  .graph span
+    display: none
+
+@media(max-width: 839px)
+  .skew-pages
+    display: none
+  .cards
+    display: block
+@media(orientation: portrait)
+  .skew-pages
+    display: none
+  .cards
+    display: block

@@ -88,7 +88,7 @@ a
   border-top-color: lighten($first-secondary, 10)
   border-bottom-color: darken($first-secondary, 10)
 
-  background-image: url(https://scontent.fmad3-1.fna.fbcdn.net/v/t1.0-9/947320_944305358993529_198299321184402044_n.jpg?oh=8422ad7efbde19d79515cb3e6354ca1f&oe=58A53FCF)
+  background-image: url(../images/iamgroot.jpg)
 
 .hello
   @extends $overlay-light
@@ -135,14 +135,24 @@ a
  *    WORK
  */
  
-.skew-page_content
+.skew-page_content,
+.card
   background-color: $middle
   
-  &_image:before
-    background: alpha($base-light, .3)
+  //&_image:before,
+  .card-title
+    color: $white
+    //background: alpha($base-light, .3)
+    background: $dark-overlay
+
+/*
+.card-title
+  background: rgba(250, 250, 250, 0.2)
+*/
 
 #page1
-  .skew-page_content_image
+  .skew-page_content_image,
+  .card-image
     background-image: url(http://www.dev8.net/wp-content/uploads/web-design-example9.jpg)
 
 /*
@@ -158,5 +168,5 @@ a
 
 .form-control
   @extends $overlay-dark
-  color: $first-secondary;
+  color: #ddd;
   
