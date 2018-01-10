@@ -41,6 +41,7 @@ $(document).ready(function() {
 		}
 	});
 
+	$('[data-toggle="tooltip"]').tooltip();
   
 	/**
 	 * Checks if there's another animation that's
@@ -78,21 +79,21 @@ $(document).ready(function() {
 		});
 	}
 
-	$("#work").on("mousewheel DOMMouseScroll", function(event) {
+	$(".skew-pages").on("mousewheel DOMMouseScroll", function(event) {
 		if(scrolling) {
 			event.preventDefault();
 			return;
 		}
 		
-		if(event.originalEvent.wheelDelta < 0 || event.originalEvent.detail < 0) {
-			navigateDown();
+		if(event.originalEvent.wheelDelta < 0 || event.originalEvent.detail > 0) {
+			navigateDown(event);
 		}
-		else if(event.originalEvent.wheelDelta > 0 || event.originalEvent.detail > 0) {
-			navigateUp();
+		else if(event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+			navigateUp(event);
 		}
 	});
 
-	function navigateUp() {
+	function navigateUp(event) {
 		if(currentWorkPage - 1 >= 0) {
 			scrolling = true;
 			
@@ -106,7 +107,7 @@ $(document).ready(function() {
 		}
 	}
 
-	function navigateDown() {
+	function navigateDown(event) {
 		if(currentWorkPage + 1 <= numberOfWorkPages) {
 			scrolling = true;
 			
