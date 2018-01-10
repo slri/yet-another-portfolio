@@ -27,10 +27,11 @@ const
 	PROD_DIR 	= "dist";
 var	server 		= PRODUCTION ? PROD_DIR : DEV_DIR;
 
-// Build task should be run before running the default task
+// Build task should be run before
+// running the default task
 // Production build task
 gulp.task("build", function(callback) {
-	runSequence("clean", ["fonts", "stylus", "haml"], "useref", callback);
+	runSequence("clean", ["fonts", "images", "stylus", "haml"], "useref", callback);
 });
 
 // Development build task
@@ -50,7 +51,8 @@ gulp.task("browserSync", function() {
 	});
 });
 
-// Combining styles and scripts into one file each and minifying
+// Combining styles and scripts
+// into one file each and minifying
 gulp.task("useref", function() {
 	return gulp.src(DEV_DIR + "/*.html")
 	.pipe(useref())
@@ -82,8 +84,16 @@ gulp.task("fonts", function() {
     .pipe(gulp.dest(PROD_DIR + "/fonts"));
 });
 
+// Copy the pics over
+gulp.task("images", function() {
+  return gulp.src(DEV_DIR + "/images/**/*")
+    .pipe(gulp.dest(PROD_DIR + "/images"));
+});
 
-// Look for Haml, Stylus, and JS files for changes
+
+
+// Look for Haml, Stylus, and JS
+// files for changes
 gulp.task("watch", function() {
   gulp.watch(DEV_DIR + "/haml/**/*.haml", function() {
   	runSequence("haml", "useref");
@@ -93,7 +103,9 @@ gulp.task("watch", function() {
   });
   gulp.watch(DEV_DIR + "/js/**/*.js", ["useref"]);
 });
-// Same as above, just less things to do
+// Same as above, just less
+// things to do so the process
+// is quicker while I'm developing
 gulp.task("watch--dev", function() {
   gulp.watch(DEV_DIR + "/haml/**/*.haml", ["haml"]);
   gulp.watch(DEV_DIR + "/stylus/**/*.styl", ["stylus"]);
