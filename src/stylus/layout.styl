@@ -132,7 +132,7 @@ header
     & .i,
     & .e
       size(inherit, 0)
-
+    //i don't need more options do i?
     & .full
       width: 100%
     & .half
@@ -148,6 +148,7 @@ header
  */
 #work
    @extends $reset-m-p
+   position: relative
 
 .skew-pages
   position: relative
@@ -255,10 +256,48 @@ header
   .card-content
     padding-top 20px
 
-#page1
-  & .skew-page_content_image,
-  & .card-image
-    background-size: cover
+.skew-pages_overlay
+  position: absolute
+  top: 0
+  left: 0
+  background: alpha($base, 0.6) //url(../images/texture.png)
+  min-height: 100vh
+  width: 100%
+  
+  .btn
+    position: absolute
+    padding: 62px 0
+    width: 150px
+    border-radius: 50%
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+  
+  .btn,
+  .skip-work
+    background: transparent
+    color: $lightest
+    border-color: $lightest
+    &:hover
+      border-color: $white
+      color: $white
+    
+  .stick-top,
+  .stick-bottom
+    position: absolute
+    padding: 20px
+    left: 50%
+    transform: translateX(-50%)
+    
+  .stick-bottom
+    bottom: 0
+    
+  .stick-top
+    top: 0
+
+.skew-page_content_image,
+.card-image
+  background-size: cover
 
 /*
  *    CONTACT

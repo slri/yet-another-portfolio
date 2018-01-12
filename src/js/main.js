@@ -7,6 +7,7 @@ $(document).ready(function() {
 	 * @type {Boolean}
 	 */
 	var scrolling = false;
+	var sPActive = false; //skewed pages active?
 
 	var workPages = $(".skew-page");
 	var numberOfWorkPages = workPages.length - 1;
@@ -79,7 +80,12 @@ $(document).ready(function() {
 		});
 	}
 
-	$(".skew-pages").on("mousewheel DOMMouseScroll", function(event) {
+	$("#work").on("mousewheel DOMMouseScroll", function(event) {
+
+		if(!sPActive) {
+			return;
+		}
+
 		if(scrolling) {
 			event.preventDefault();
 			return;
@@ -131,7 +137,15 @@ $(document).ready(function() {
 	});
 
 	// Attempt to make one of those fancy fade-ins
-	setTimeout(function() {
-		$(".background").css("opacity", "1");
-	}, 200);
+	// setTimeout(function() {
+	// 	$(".background").css("opacity", "1");
+	// }, 200);
+	$("#show-work").click(function(event) {
+		determine(event, this.hash);
+	    sPActive = true;
+	});
+	$(".skip-work").click(function(event) {
+		determine(event, this.hash);
+	    sPActive = false;
+	});
 });
