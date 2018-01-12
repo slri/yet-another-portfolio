@@ -8,6 +8,7 @@ $(document).ready(function() {
 	 */
 	var scrolling = false;
 	var sPActive = false; //skewed pages active?
+	var overlayBg = $(".skew-pages_overlay").css("background-color");
 
 	var workPages = $(".skew-page");
 	var numberOfWorkPages = workPages.length - 1;
@@ -143,9 +144,13 @@ $(document).ready(function() {
 	$("#show-work").click(function(event) {
 		determine(event, this.hash);
 	    sPActive = true;
+	    $(this).css("opacity", 0);
+	    $(".skew-pages_overlay").css("background", "transparent");
 	});
 	$(".skip-work").click(function(event) {
 		determine(event, this.hash);
 	    sPActive = false;
+	    $("#show-work").css("opacity", 1);
+	    $(".skew-pages_overlay").css("background", overlayBg);
 	});
 });
