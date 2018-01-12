@@ -1,6 +1,8 @@
 # Howdy
 Personal portfolio in making using [Bootstrap](https://github.com/twbs/bootstrap), [Font Awesome](https://github.com/FortAwesome/Font-Awesome), [Devicon](https://github.com/konpa/devicon/), [jQuery](https://github.com/jquery/jquery), and [jQuery bez plugin](https://github.com/rdallasgray/bez)
 
+You can see what it looks like when built [here](https://slri.github.io/).
+
 ## Why?
 Since CodePen decided to break and the support isn't replying, I might as well host it on here and test it locally from now on.
 
