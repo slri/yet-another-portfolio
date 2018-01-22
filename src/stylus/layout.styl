@@ -30,6 +30,10 @@ header
 .btn-round
   border-radius: 50%
 
+h2 a:hover
+  text-decoration: none;
+
+
 
 /*
  *    PARALLAX BACKGROUND
@@ -147,8 +151,22 @@ header
  *    WORK
  */
 #work
-   @extends $reset-m-p
-   position: relative
+  @extends $reset-m-p
+  position: relative
+  
+  h2 a,
+  .btn-sm
+    color: $second-secondary
+  h2 a:hover,
+  .btn-sm:hover
+    color: lighten($second-secondary, 10)
+  .btn-sm
+    border-color: $second-secondary
+  .btn-sm:hover
+    border-color: lighten($second-secondary, 10)
+
+  ul
+    text-align: left
 
 .skew-pages
   position: relative
@@ -164,6 +182,11 @@ header
   size(100%, 100%)
   
   transform: rotate(0.001deg)
+  
+  z-index: 9901
+  
+  &.active
+    z-index: 9996
   
   &-left,
   &-right
@@ -254,7 +277,8 @@ header
     padding: 20px
   
   .card-content
-    padding-top 20px
+    padding-top: 20px
+    padding-bottom: 20px
 
 .skew-pages_overlay
   position: absolute
@@ -263,8 +287,9 @@ header
   background: alpha($base, 0.6) //url(../images/texture.png)
   min-height: 100vh
   width: 100%
-  
-  .btn
+  z-index: 9997
+.skew-pages_navigation
+  &.btn
     position: absolute
     padding: 62px 0
     width: 150px
@@ -273,33 +298,38 @@ header
     left: 50%
     transform: translate(-50%, -50%)
   
-  .btn,
-  .skip-work
+  &.btn,
+  &.skip-work
     background: transparent
     color: $lightest
     border-color: $lightest
+    z-index: 9998
     &:hover
       border-color: $white
       color: $white
-  .btn:hover
+  &.btn:hover
     background: alpha($white, 0.1)
+  &.skip-work
+    background: alpha($darkest, 0.5)
+    border-radius: 50%
     
-  .stick-top,
-  .stick-bottom
+  &.stick-top,
+  &.stick-bottom
     position: absolute
     padding: 20px
     left: 50%
     transform: translateX(-50%)
     
-  .stick-bottom
-    bottom: 0
+  &.stick-bottom
+    bottom: 50px
     
-  .stick-top
-    top: 0
+  &.stick-top
+    top: 50px
 
 .skew-page_content_image,
 .card-image
   background-size: cover
+  background-position: 50% 0%
 
 /*
  *    CONTACT
@@ -358,12 +388,14 @@ footer
     display: none
   .cards
     display: block
-  .skew-pages_overlay
+  .skew-pages_overlay,
+  .skew-pages_navigation
     display: none
 @media(orientation: portrait)
   .skew-pages
     display: none
   .cards
     display: block
-  .skew-pages_overlay
+  .skew-pages_overlay,
+  .skew-pages_navigation
     display: none

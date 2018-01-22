@@ -146,11 +146,17 @@ $(document).ready(function() {
 	    sPActive = true;
 	    $(this).css("opacity", 0);
 	    $(".skew-pages_overlay").css("background", "transparent");
+	    setTimeout(function() {
+			$(".skew-pages_overlay").css("z-index", "9900");
+		}, 500);
 	});
 	$(".skip-work").click(function(event) {
 		determine(event, this.hash);
 	    sPActive = false;
 	    $("#show-work").css("opacity", 1);
 	    $(".skew-pages_overlay").css("background", overlayBg);
+	    setTimeout(function() {
+			$(".skew-pages_overlay").css("z-index", "9997");
+		}, 500);
 	});
 });
