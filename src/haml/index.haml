@@ -51,14 +51,17 @@
 
 %html
   %head
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+
     %link{:rel => "stylesheet", :type => "text/css", :href => "https://fonts.googleapis.com/css?family=Dosis:300,500|Open+Sans:400,600&subset=latin-ext"}
+    %link{:rel => "icon", :type => "image/x-icon", :href => "images/favicon.png"}
     /build:css css/style.min.css
     - for i in ["bootstrap", "devicon", "font-awesome"]
       %link{:rel => "stylesheet", :type => "text/css", :href => "css/#{i}.min.css"}
     %link{:rel => "stylesheet", :type => "text/css", :href => "css/main.css"}
     /endbuild
 
-    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title Portfolio | slri
 
   %body.text-center#top{:data => {:spy => "scroll", :target => ".navbar", :offset => "50"}}
     .background
@@ -106,7 +109,7 @@
           .row
             .skill.col-xs-12.col-md-6
               .col-xs-12.col-sm-3.text-center
-                %i.devicon.devicon-html5-plain
+                %i.devicon.devicon-html5-plain{:data => {:toggle => "tooltip", :placement => "top"}, :title => "HTML5"}
               .graph.col-xs-12.col-sm-9
                 .text.row
                   .col-xs-4
@@ -130,7 +133,7 @@
                     .e.full
             .skill.col-xs-12.col-md-6
               .col-xs-12.col-sm-3.text-center
-                %i.devicon.devicon-css3-plain
+                %i.devicon.devicon-css3-plain{:data => {:toggle => "tooltip", :placement => "top"}, :title => "CSS3"}
               .graph.col-xs-12.col-sm-9
                 .text.row
                   .col-xs-4
@@ -155,7 +158,7 @@
           .row
             .skill.col-xs-12.col-md-6
               .col-xs-12.col-sm-3.text-center
-                %i.devicon.devicon-javascript-plain
+                %i.devicon.devicon-javascript-plain{:data => {:toggle => "tooltip", :placement => "top"}, :title => "Javascript"}
               .graph.col-xs-12.col-sm-9
                 .text.row
                   .col-xs-4
@@ -179,7 +182,7 @@
                     .e.half
             .skill.col-xs-12.col-md-6
               .col-xs-12.col-sm-3.text-center
-                %i.devicon.devicon-jquery-plain
+                %i.devicon.devicon-jquery-plain{:data => {:toggle => "tooltip", :placement => "top"}, :title => "jQuery"}
               .graph.col-xs-12.col-sm-9
                 .text.row
                   .col-xs-4
@@ -204,7 +207,7 @@
           .row
             .skill.col-xs-12.col-md-6
               .col-xs-12.col-sm-3.text-center
-                %i.devicon.devicon-bootstrap-plain
+                %i.devicon.devicon-bootstrap-plain{:data => {:toggle => "tooltip", :placement => "top"}, :title => "Bootstrap"}
               .graph.col-xs-12.col-sm-9
                 .text.row
                   .col-xs-4
@@ -228,7 +231,7 @@
                     .e.third
             .skill.col-xs-12.col-md-6
               .col-xs-12.col-sm-3.text-center
-                %i.devicon.devicon-sass-plain
+                %i.devicon.devicon-sass-plain{:data => {:toggle => "tooltip", :placement => "top"}, :title => "Sass"}
               .graph.col-xs-12.col-sm-9
                 .text.row
                   .col-xs-4
@@ -254,7 +257,7 @@
           .row
             .skill.col-xs-12.col-md-6
               .col-xs-12.col-sm-3.text-center
-                %i.devicon.devicon-php-plain
+                %i.devicon.devicon-php-plain{:data => {:toggle => "tooltip", :placement => "top"}, :title => "PHP"}
               .graph.col-xs-12.col-sm-9
                 .text.row
                   .col-xs-4
@@ -278,7 +281,7 @@
                     .e.half
             .skill.col-xs-12.col-md-6
               .col-xs-12.col-sm-3.text-center
-                %i.devicon.devicon-mysql-plain
+                %i.devicon.devicon-mysql-plain{:data => {:toggle => "tooltip", :placement => "top"}, :title => "MySQL"}
               .graph.col-xs-12.col-sm-9
                 .text.row
                   .col-xs-4
@@ -303,7 +306,7 @@
           .row
             .skill.col-xs-12.col-md-6
               .col-xs-12.col-sm-3.text-center
-                %i.devicon.devicon-laravel-plain
+                %i.devicon.devicon-laravel-plain{:data => {:toggle => "tooltip", :placement => "top"}, :title => "Laravel"}
               .graph.col-xs-12.col-sm-9
                 .text.row
                   .col-xs-4
@@ -327,7 +330,7 @@
                     .e.third
             .skill.col-xs-12.col-md-6
               .col-xs-12.col-sm-3.text-center
-                %i.devicon.devicon-wordpress-plain
+                %i.devicon.devicon-wordpress-plain{:data => {:toggle => "tooltip", :placement => "top"}, :title => "Wordpress"}
               .graph.col-xs-12.col-sm-9
                 .text.row
                   .col-xs-4
@@ -454,7 +457,7 @@
     
     %footer
       .container
-        .credits
+        %p.credits
           Made by Irina Balaban
           %br
           Using
@@ -485,7 +488,7 @@
             %a{:href => "https://www.freecodecamp.org/ruinisprobablytaken"}
               %i.fa.fa-free-code-camp
           .col-xs-12.col-sm-1
-            %a{:href => "#", :data => {:toggle => "tooltip", :placement => "top"}, :title => "Add slri#2962!"}
+            %span{:data => {:toggle => "tooltip", :placement => "top"}, :title => "Add slri#2962!"}
               %i.fa.fa-discord
           .col-xs-12.col-sm-1
             %a.skype-button{:href => "#!", :"data-contact-id" => "live:irina.balaban.dev"}
