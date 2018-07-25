@@ -167,6 +167,9 @@ h2 a:hover
 
   ul
     text-align: left
+  
+  .tooltip
+    z-index: 9999
 
 .skew-pages
   position: relative
@@ -307,7 +310,8 @@ h2 a:hover
     &:hover
       border-color: $white
       color: $white
-  &.btn:hover
+  &.btn:hover,
+  &.btn:focus
     background: alpha($white, 0.1)
   &.skip-work
     background: alpha($darkest, 0.5)
@@ -342,7 +346,7 @@ h2 a:hover
   padding: 15px 0 5px 0
 
 .form-control
-  border: none
+  border-color: transparent
   border-radius: 0
 
 textarea
@@ -358,11 +362,14 @@ footer
   padding-top: 2vh
   
   .credits,
-  .social a
+  .social a,
+  .social span
     display: block
 
-  .social a
+  .social a,
+  .social span
     padding: 2.5vw 0
+
     
     
 /*

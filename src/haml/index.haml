@@ -434,10 +434,10 @@
             %p In this project the accent was on the unique design, ease of use, and customization freedom. It had to be friendly for non-technical people and having that in mind I decided on using WordPress and Divi theme for easy page manipulation.
             %a.btn.btn-sm{:href => "https://codepen.io/RuinIsProbablyTaken/pen/YNzjwZ"} Header concept
       .skew-pages_overlay
-      %a.stick-top.skip-work.skew-pages_navigation{:href => "#skills"}
+      %a.stick-top.skip-work.skew-pages_navigation{:href => "#skills", :data => {:toggle => "tooltip", :placement => "bottom"}, :title => "Skip section"}
         %span.fa.fa-chevron-up
       %a.btn#show-work.skew-pages_navigation{:href => "#work"} Browse
-      %a.stick-bottom.skip-work.skew-pages_navigation{:href => "#contact"}
+      %a.stick-bottom.skip-work.skew-pages_navigation{:href => "#contact", :data => {:toggle => "tooltip", :placement => "top"}, :title => "Skip section"}
         %span.fa.fa-chevron-down
 
 
@@ -488,12 +488,13 @@
             %a{:href => "https://www.freecodecamp.org/ruinisprobablytaken"}
               %i.fa.fa-free-code-camp
           .col-xs-12.col-sm-1
-            %span{:data => {:toggle => "tooltip", :placement => "top"}, :title => "Add slri#2962!"}
+            %span{:data => {:toggle => "tooltip", :placement => "top"}, :title => "Add Pilvi#2962 !"}
               %i.fa.fa-discord
           .col-xs-12.col-sm-1
             %a.skype-button{:href => "#!", :"data-contact-id" => "live:irina.balaban.dev"}
               %i.fa.fa-skype
-
+        %a.back-to-top{:href => "#"}
+          %i.fa.fa-chevron-up
 
     %script{:src => "https://swc.cdn.skype.com/sdk/v1/sdk.min.js"}
     /build:js js/main.min.js

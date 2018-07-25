@@ -29,7 +29,8 @@ footer
   @extends $overlay-light
   color: $base
 
-a
+a,
+.social span
   color: $base
   &:hover
     color: $base-light
@@ -58,7 +59,7 @@ a
     color: $lightest
 
 .sticky .navbar
-  @extends $overlay-light
+  background: $lightest
   
   & .collapse[aria-expanded=true]
     background: transparent
